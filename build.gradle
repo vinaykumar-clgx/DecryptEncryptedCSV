@@ -1,0 +1,71 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.3.6.RELEASE'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenLocal()
+    maven { url 'https://repo3.corelogic.net/nexus/content/repositories/idc-repo-releases' }
+    maven { url 'https://repo3.corelogic.net/nexus/content/repositories/idc-repo-snap' }
+    maven { url 'https://repo2.corelogic.net/repository/idc-repo-releases/' }
+    maven { url 'https://repo2.corelogic.net/repository/idc-repo-snap/' }
+    maven { url 'https://repo.corelogic.net/nexus/content/repositories/idc-repo-releases' }
+    maven { url 'https://repo.corelogic.net/nexus/content/groups/m2' }
+    mavenCentral()
+    maven { url = "https://repo.spring.io/milestone" }
+    maven { url = "https://repo.spring.io/release" }
+    maven { url = "https://plugins.gradle.org/m2" }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR9"
+        mavenBom "org.springframework.cloud:spring-cloud-starter-parent:Hoxton.SR9"
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.cloud:spring-cloud-cloudfoundry-connector:2.0.4.RELEASE'
+    implementation 'org.springframework.security.oauth:spring-security-oauth2:2.5.0.RELEASE'
+    implementation('org.springframework.cloud:spring-cloud-security') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-security'
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-web'
+    }
+    implementation('com.corelogic.clp.starters:clp-document-service-starter:4.1.8') {
+        exclude group: 'org.springframework.boot'
+        exclude group: 'org.springframework.cloud'
+    }
+    implementation('com.corelogic.clp.starters:clp-config-starter:2.2.4') {
+        exclude group: 'io.pivotal.spring.cloud'
+    }
+    implementation('com.corelogic.clp.starters:clp-encryption-service-starter:5.2.7') {
+        exclude group: 'org.springframework.boot'
+        exclude group: 'org.springframework.cloud'
+    }
+
+    //implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.apache.commons:commons-csv:1.9.0'
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'org.postgresql:postgresql'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
