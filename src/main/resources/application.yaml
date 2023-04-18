@@ -1,0 +1,35 @@
+#spring:
+#  jpa:
+#    hibernate:
+#      ddl-auto: validate
+#    show-sql: true
+#  datasource:
+#    aps:
+#      url: jdbc:postgresql://10.212.108.40:5434/apscof_prd
+#      username:
+#      password:
+#      driverClassName: org.postgresql.Driver
+#    be:
+#      url: jdbc:postgresql://10.212.108.40:5433/cof_prd
+#      username:
+#      password:
+#      driverClassName: org.postgresql.Driver
+#    hikari:
+#      maxLifetime: 2000000
+
+
+documentservice:
+  url: https://clp-document-service.corelogic.com
+
+encryptionservice:
+  url: https://clp-encryption-service-int.apps.pcfwtcdev.clgxlabs.io
+  key-name: KEY-LABS-COF-DEV-V-AES
+
+clpservices:
+  oauth2:
+    client:
+      client-id: cof-backend-services
+      client-secret: "uwLtvlTv2nKKCVG2CZTO"
+      access-token-uri: https://corelogic-prod.apigee.net/edgemicro-auth/token
+      check-token-uri: https://corelogic-prod.apigee.net/uaa-compatible/check_token
+

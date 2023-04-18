@@ -1,0 +1,33 @@
+#spring:
+#  jpa:
+#    hibernate:
+#      ddl-auto: validate
+#    show-sql: true
+#  datasource:
+#    aps:
+#      url: jdbc:postgresql://localhost:5432/alfresco_dev
+#      username: pivotal
+#      password:
+#      driverClassName: org.postgresql.Driver
+#    be:
+#      url: jdbc:postgresql://localhost:5432/cof_dev
+#      username: pivotal
+#      password:
+#      driverClassName: org.postgresql.Driver
+
+
+documentservice:
+  url: https://clp-document-service-int.apps.pcfusw1stg.solutions.corelogic.com
+
+encryptionservice:
+  url: https://clp-encryption-service-int.apps.pcfwtcdev.clgxlabs.io
+  key-name: KEY-LABS-COF-DEV-V-AES
+
+clpservices:
+  oauth2:
+    client:
+      client-id: cof-backend-services
+      client-secret: "uwLtvlTv2nKKCVG2CZTO"
+      access-token-uri: https://corelogic-np-test.apigee.net/edgemicro-auth/token
+      check-token-uri: https://corelogic-np-test.apigee.net/uaa-compatible/check_token
+
